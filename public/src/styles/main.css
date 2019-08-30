@@ -46,11 +46,8 @@ h2 {
     color: #426da9;
 }
 
-form {
-    display: flex;
+.form-container {
     margin: 0 auto;
-    flex-direction: column;
-    justify-content: space-between;
     width: 35%;
     max-width: 535px;
     min-width: 275px;
@@ -59,6 +56,12 @@ form {
     font-size: 14px;
     color: white;
     border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .sign-up, #log-out, #analyze-button {
@@ -74,6 +77,27 @@ form {
     font-weight: bold;
     border: 0;
     background-color: #f38d52;
+}
+
+.switch {
+    text-align: center;
+}
+
+#signin-button, #signup-button {
+    margin-top: 20px;
+    padding: 8px 15px;
+    width: 200px;
+    border-radius: 8px;
+    color: white;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 0;
+    background-color: #426da9;
+}
+
+#signin-button:hover, #signup-button:hover {
+    box-shadow: 1px 1px 2px #667;
 }
 
 #log-out {
@@ -151,4 +175,7 @@ footer {
     footer {position: static;
         margin-top: 50px;}
     main {padding-top: 20px;}
+}
+.no-display {
+    display: none;
 }
