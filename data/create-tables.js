@@ -1,0 +1,40 @@
+const client = require('../lib/client');
+
+client.connect()
+    .then(() => {
+        return client.query(`
+            CREATE TABLE users (
+                id SERIAL PRIMARY KEY,
+                name VARCHAR(256) NOT NULL UNIQUE,
+                email VARCHAR(256) NOT NULL UNIQUE,
+                hash VARCHAR(512) NOT NULL
+            );
+            CREATE TABLE text (
+                id SERIAL PRIMARY KEY,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                name VARCHAR(256) NOT NULL UNIQUE,
+                category VARCHAR(256) NOT NULL,
+                body VARCHAR(1024) NOT NULL
+            );
+            CREATE TABLE document_results (
+                id SERIAL PRIMARY KEY,
+                text_id INTEGER NOT NULL REFERENCES text(id),
+                tone_id VARCHAR(256) NOT NULL,
+                score DECIMAL(7,6) NOT NULL
+            );
+            CREATE TABLE sentence_results (
+                id SERIAL PRIMARY KEY,
+                text_id INTEGER NOT NULL REFERENCES text(id),
+                sentence VARCHAR(256) NOT NULL,
+                tone_id VARCHAR(256) NOT NULL,
+                score DECIMAL(7,6) NOT NULL
+            );
+    `);
+    })
+    .then(
+        () => console.log('create tables complete'),
+        err => console.log(err)
+    )
+    .then(() => {
+        client.end();
+    });
