@@ -61,7 +61,7 @@ form {
     border-radius: 8px;
 }
 
-.sign-up, #log-out {
+.sign-up, #log-out, #analyze-button {
     align-self: center;
     display: inline-block;
     margin-top: 20px;
@@ -81,7 +81,13 @@ form {
     width: 125px;
 }
 
-.sign-up:hover, #log-out:hover {
+#analyze-button {
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+}
+
+.sign-up:hover, #log-out:hover, #analyze-button:hover {
     box-shadow: 1px 1px 2px #667;
 }
 
@@ -101,6 +107,22 @@ form input {
 form h2 {
     margin: 0;
     color: white;
+}
+
+#message-input, #results-section {
+    width: 70%;
+    margin: 0 auto 50px; 
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    overflow: scroll;
+    border-radius: 8px;
+    border: 1px solid #00a99d;
+    font-size: 18px;
+    padding: 8px;
 }
 
 footer {
