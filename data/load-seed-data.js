@@ -47,15 +47,16 @@ client.connect()
     .then(() => {
         return Promise.all(
             sentenceResultsData[0].sentences_tone.map(item => {
-                item.tones.map(element => {
+                return Promise.all(item.tones.map(element => {
                     return client.query(`
-                        INSERT INTO document_results (text_id, sentence, tone_id, score)
+                        INSERT INTO sentence_results (text_id, sentence, tone_id, score)
                         VALUES ($1, $2, $3, $4)
                         RETURNING *;
                     `,
                     [1, item.text, element.tone_id, element.score])
                         .then(result => result.rows[0]);
-                });
+                })
+                );
             })
         );
     })
