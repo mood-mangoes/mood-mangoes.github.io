@@ -38,6 +38,7 @@ class SignUp extends Component {
                 </p>
                 
                     <button class="sign-up">Sign Up</button>
+                    
                 
             </form>
             
