@@ -20,6 +20,20 @@ class SignIn extends Component {
 
     renderHTML() {
         return /*html*/`
+            <form class="auth-form standard">
+                    <h2>Sign Up!</h2>
+                    <p>
+                        <label for="email">Email:</label><br>
+                        <input id="email" type="email" name="email" required placeholder=" youremail@gmail.com">
+                    </p>
+                    <p>
+                        <label for="password">Password:</label><br>
+                        <input id="password" type="password" name="password" required>
+                    </p>
+                    
+                        <button class="sign-up">Sign Up</button>
+                    
+                </form>
             
         `;
     }
