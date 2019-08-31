@@ -4,6 +4,7 @@ import SignUp from '../auth/SignUp.js';
 import SignIn from '../auth/SignIn.js';
 import { userSignUp, userSignIn } from '../../services/tone-check-api.js';
 import store from '../../services/store.js';
+import Footer from '../app/Footer.js';
 
 function success(user) {
     store.setToken(user.token);
@@ -19,6 +20,9 @@ class AuthApp extends Component {
 
         const header = new Header();
         dom.prepend(header.renderDOM());
+
+        const footer = new Footer();
+        dom.appendChild(footer.renderDOM());
 
         const errors = dom.querySelector('.errors');
         const signUpContainer = dom.querySelector('#signup-container');

@@ -1,16 +1,16 @@
 import Component from '../Component.js';
-// import store from '../../services/store.js';
+import store from '../../services/store.js';
 
 class Header extends Component {
 
-    // onRender(dom) {
-    //     const logoutButton = dom.querySelector('#log-out');
+    onRender(dom) {
+        const logoutButton = dom.querySelector('#log-out');
 
-    //     logoutButton.addEventListener('click', () => {
-    //         store.removeToken();
-    //         window.location = 'auth.html';
-    //     });
-    // }
+        logoutButton.addEventListener('click', () => {
+            store.removeToken();
+            window.location = 'auth.html';
+        });
+    }
 
     renderHTML() {
         return /*html*/`
@@ -21,6 +21,7 @@ class Header extends Component {
                     <a href="">Before/After</a>
                     <a href="">About Us</a>
                 </nav>
+                <button id="log-out">Log Out</button>
             </header>
         `;
     }

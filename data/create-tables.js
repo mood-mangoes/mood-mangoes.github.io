@@ -5,7 +5,7 @@ client.connect()
         return client.query(`
             CREATE TABLE users (
                 id SERIAL PRIMARY KEY,
-                display_name VARCHAR(256) NOT NULL UNIQUE,
+                display_name VARCHAR(256) NOT NULL,
                 email VARCHAR(256) NOT NULL UNIQUE,
                 hash VARCHAR(512) NOT NULL
             );
