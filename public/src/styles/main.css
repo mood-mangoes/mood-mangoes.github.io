@@ -126,6 +126,8 @@ form input {
     height: 25px;
     border-radius: 6px;
     border: 0;
+    padding: 8px;
+    font-family: Heebo;
 }
 
 form h2 {
@@ -175,7 +177,14 @@ footer {
     footer {position: static;
         margin-top: 50px;}
     main {padding-top: 20px;}
+    #signup-button {width: 175px;}
 }
 .no-display {
     display: none;
+}
+
+.errors {
+    font-family: monospace;
+    text-align: center;
+    margin-top: 15px;
 }
