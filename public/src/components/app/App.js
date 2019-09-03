@@ -9,6 +9,7 @@ class NewComponent extends Component {
         dom.prepend(header.renderDOM());
 
         const textInput = new TextInput();
+        
         dom.appendChild(textInput.renderDOM());
     }
 

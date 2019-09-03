@@ -3,9 +3,11 @@ import { addMessage } from '../../services/tone-check-api.js';
 
 class TextInput extends Component {
     onRender(dom) {
+        // const onAdd = this.props.onAdd;
         const analyzeButton = dom.querySelector('button');
         const textArea = dom.querySelector('textarea');
         analyzeButton.addEventListener('click', (event) => {
+            // console.log('this is firing');
             event.preventDefault();
             
             const messageInput = {
