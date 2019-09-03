@@ -5,6 +5,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const client = require('./lib/client');
 
+
 client.connect();
 
 const ensureAuth = require('./lib/auth/ensure-auth');
@@ -39,19 +40,49 @@ app.use(cors());
 app.use(express.static('public'));
 app.use(express.json());
 
-
-// app.post('/v3/tone', (request, response) => {
-//     client.query(`
-//     INSERT INTO text (user_id, name, category, body)
-//                     VALUES ($1, $2, $3, $4)
-//                     RETURNING *;
-//                 `,
-//                 [, , , ])
-//     `)
-// });
-
 app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
+
+
+const ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
+const toneAnalyzer = new ToneAnalyzerV3({
+    version: '2017-09-21',
+});
+
+
+
+app.post('/api/tone_check', (req, res) => { 
+    console.log(req.body);
+    const toneParams = {
+        tone_input: { 'text': req.body.message },
+        content_type: 'application/json'
+    };
+
+    toneAnalyzer.tone(toneParams)
+        .then(item => {
+            console.log(item);
+            client.query(`
+            INSERT INTO document_results (text_id, tone_id, score)
+                            VALUES ($1, $2, $3)
+                            RETURNING *;
+                        `,
+            [1, 2, 6.5]
+            )
+                .then(result => {
+                    res.json(result, null, 2);
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err.message || err
+                    });
+                });
+        });
+});
+
+
+
+
+
 
 
 app.listen(PORT, () => {

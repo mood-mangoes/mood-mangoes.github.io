@@ -9,11 +9,11 @@ client.connect()
         return Promise.all(
             fakeUser.map(item => {
                 return client.query(`
-                    INSERT INTO users (email, name, hash)
+                    INSERT INTO users (email, display_name, hash)
                     VALUES ($1, $2, $3)
                     RETURNING *;
                 `,
-                [item.email, item.name, item.hash])
+                [item.email, item.display_name, item.hash])
                     .then(result => result.rows[0]);
             })
         );

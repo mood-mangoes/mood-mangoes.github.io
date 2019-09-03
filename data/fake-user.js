@@ -1,7 +1,7 @@
 module.exports = [
     {
         email: 'fake@gmail.com',
-        name: 'fake',
+        display_name: 'fake',
         hash: 'fake'
     },
 ];
