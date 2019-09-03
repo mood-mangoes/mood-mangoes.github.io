@@ -22,6 +22,25 @@ class SignUp extends Component {
 
     renderHTML() {
         return /*html*/`
+            <form class="auth-form standard">
+                <h2>Sign Up!</h2>
+                <p>
+                    <label for="name">Name:</label><br>
+                    <input id="signup-name" name="name" required placeholder=" Name">
+                </p>
+                <p>
+                    <label for="email">Email:</label><br>
+                    <input id="signup-email" type="email" name="email" required placeholder=" youremail@gmail.com">
+                </p>
+                <p>
+                    <label for="password">Password:</label><br>
+                    <input id="signup-password" type="password" name="password" required>
+                </p>
+                
+                    <button class="sign-up">Sign Up</button>
+                    
+                
+            </form>
             
         `;
     }
