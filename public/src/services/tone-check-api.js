@@ -49,3 +49,5 @@ export function userSignIn(credentials) {
         body: JSON.stringify(credentials)
     });
 }
+
+export function getResults()
