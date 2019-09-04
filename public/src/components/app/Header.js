@@ -21,7 +21,7 @@ class Header extends Component {
                 <nav>
                     <a href="/index.html">Tester</a>
                     <a href="/results.html">Past Submissions</a>
-                    <a href="">About Us</a>
+                    <a href="/about-us.html">About Us</a>
                 </nav>
                 <button id="log-out">Log Out</button>
             </header>

@@ -20,9 +20,14 @@ class AuthApp extends Component {
 
         const header = new Header();
         dom.prepend(header.renderDOM());
-        // const logoutButton = dom.querySelector('#log-out');
-        console.log(location.pathname);
-        // logoutButton.classList.add('no-display');
+        
+        const blurbArea = dom.querySelector('#blurb-area');
+        const blurb = document.createElement('h2');
+        blurb.textContent = 'Why Use Tone Check?';
+        const blurbText = document.createElement('p');
+        blurbText.textContent = 'Use tone check for difficult emails, personal bios, or even dating profiles! Make sure you\'re using the right tone, and check your past submissions!';
+        blurbArea.appendChild(blurbText);
+        blurbArea.prepend(blurb);
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
@@ -80,6 +85,7 @@ class AuthApp extends Component {
             <div>
                 <!-- header goes here -->
                 <main>
+                    <div id="blurb-area"></div>
                     <section class="form-container">
                         <section class="no-display" id="signup-container">
                             <p class="switch">
