@@ -10,10 +10,11 @@ class ResultsApp extends Component {
 
         const resultsList = new ResultsList({ result: [] });
         dom.appendChild(resultsList.renderDOM());
+        console.log(getResults());
 
-        getResults().then(result => {
-            resultsList.update({ result });
-        });
+        // getResults().then(result => {
+        //     resultsList.update({ result });
+        // });
 
     } 
     renderHTML() {

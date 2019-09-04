@@ -60,3 +60,13 @@ export function addMessage(messageInput) {
         body: JSON.stringify(messageInput)
     });
 }
+
+export function getResults() {
+    const url = `${URL}/tone_check`;
+    return fetchWithError(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+}
