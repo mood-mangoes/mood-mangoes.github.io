@@ -49,3 +49,14 @@ export function userSignIn(credentials) {
         body: JSON.stringify(credentials)
     });
 }
+
+export function addMessage(messageInput) {
+    const url = `${URL}/tone_check`;
+    return fetchWithError(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(messageInput)
+    });
+}

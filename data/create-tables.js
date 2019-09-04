@@ -12,8 +12,6 @@ client.connect()
             CREATE TABLE text (
                 id SERIAL PRIMARY KEY,
                 user_id INTEGER NOT NULL REFERENCES users(id),
-                name VARCHAR(256) NOT NULL UNIQUE,
-                category VARCHAR(256) NOT NULL,
                 body VARCHAR(1024) NOT NULL
             );
             CREATE TABLE document_results (
