@@ -60,3 +60,33 @@ export function addMessage(messageInput) {
         body: JSON.stringify(messageInput)
     });
 }
+
+export function getTextResults() {
+    const url = `${URL}/tone_check/text`;
+    return fetchWithError(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+}
+
+export function getSentenceResults() {
+    const url = `${URL}/tone_check/sentence`;
+    return fetchWithError(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+}
+
+export function getDocumentResults() {
+    const url = `${URL}/tone_check/document`;
+    return fetchWithError(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+}

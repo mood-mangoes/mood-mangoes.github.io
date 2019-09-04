@@ -5,7 +5,9 @@ class Header extends Component {
 
     onRender(dom) {
         const logoutButton = dom.querySelector('#log-out');
-
+        if(location.pathname === '/auth.html') {
+            logoutButton.classList.add('no-display');
+        }
         logoutButton.addEventListener('click', () => {
             store.removeToken();
             window.location = 'auth.html';
@@ -17,9 +19,9 @@ class Header extends Component {
             <header>
                 <img src="./assets/tonechecklogo.png">
                 <nav>
-                    <a href="">Tester</a>
-                    <a href="">Before/After</a>
-                    <a href="">About Us</a>
+                    <a href="/index.html">Tester</a>
+                    <a href="/results.html">Past Submissions</a>
+                    <a href="/about-us.html">About Us</a>
                 </nav>
                 <button id="log-out">Log Out</button>
             </header>
