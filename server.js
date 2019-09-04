@@ -62,7 +62,7 @@ app.post('/api/tone_check', (req, res) => {
             fullResults = results;
         })
         .then(() => {
-            console.log(req.userId);
+            // console.log(req.userId);
             return client.query(`
                 INSERT INTO text (user_id, body)
                                 VALUES ($1, $2)
@@ -70,23 +70,22 @@ app.post('/api/tone_check', (req, res) => {
                             `,
             [req.userId, req.body.message]
             )
-                .then(res => {
-                    console.log(res);
-                })
                 .catch(err => {
                     res.status(500).json({
                         error: err.message || err
                     });
                 });
         })
-        .then(() => {
+        .then(results => {
+            const textId = results.rows[0].id;
+            // console.log(textId);
             return Promise.all(fullResults.document_tone.tones.map(item => {
                 return client.query(`
                 INSERT INTO document_results (text_id, tone_id, score)
                                 VALUES ($1, $2, $3)
                                 RETURNING *;
                             `,
-                [1, item.tone_id, item.score]
+                [textId, item.tone_id, item.score]
                 )
                     .then(res => {
                         documentResults.push(res.rows[0]);
@@ -99,6 +98,8 @@ app.post('/api/tone_check', (req, res) => {
             }));
         })
         .then(() => {
+            const textId = documentResults[0].text_id;
+            // console.log(textId);
             return Promise.all(fullResults.sentences_tone.map(item => {
                 return Promise.all(item.tones.map(element => {
                     return client.query(`
@@ -106,7 +107,7 @@ app.post('/api/tone_check', (req, res) => {
                         VALUES ($1, $2, $3, $4)
                         RETURNING *;
                     `,
-                    [1, item.text, element.tone_id, element.score]
+                    [textId, item.text, element.tone_id, element.score]
                     )
                         .then(res => {
                             sentenceResults.push(res.rows[0]);
