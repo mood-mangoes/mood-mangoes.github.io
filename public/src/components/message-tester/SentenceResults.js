@@ -3,18 +3,7 @@ import Component from '../Component.js';
 class SentenceResults extends Component {
 
     onRender(dom) {
-        const toneColors = {
-            anger: 'red',
-            fear: 'deepred',
-            joy: 'yellow',
-            sadness: 'blue',
-            analytical: 'purple',
-            confident: 'green',
-            tentative: 'orange'
-        };
         const sentences = dom.querySelectorAll('p'); 
-        const test = document.getElementById('results-section');
-        console.log(test);   
         const sentenceResultsData = this.props.sentenceResult;
         sentences.forEach(sentence => {
             const toneArray = [];
