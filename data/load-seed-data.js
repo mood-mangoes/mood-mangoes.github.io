@@ -22,11 +22,11 @@ client.connect()
         return Promise.all(
             textData.map(item => {
                 return client.query(`
-                    INSERT INTO text (user_id, name, category, body)
-                    VALUES ($1, $2, $3, $4)
+                    INSERT INTO text (user_id, body)
+                    VALUES ($1, $2)
                     RETURNING *;
                 `,
-                [1, 'sample', 'tweet', item])
+                [1, item])
                     .then(result => result.rows[0]);
             })
         );
