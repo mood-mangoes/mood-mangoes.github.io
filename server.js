@@ -47,7 +47,6 @@ const toneAnalyzer = new ToneAnalyzerV3({
     version: '2017-09-21',
 });
 
-
 app.post('/api/tone_check', (req, res) => { 
     const documentResults = [];
     const sentenceResults = [];
@@ -61,6 +60,24 @@ app.post('/api/tone_check', (req, res) => {
     toneAnalyzer.tone(toneParams)
         .then(results => {
             fullResults = results;
+        })
+        .then(() => {
+            console.log(req.userId);
+            return client.query(`
+                INSERT INTO text (user_id, body)
+                                VALUES ($1, $2)
+                                RETURNING *;
+                            `,
+            [req.userId, req.body.message]
+            )
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err.message || err
+                    });
+                });
         })
         .then(() => {
             return Promise.all(fullResults.document_tone.tones.map(item => {

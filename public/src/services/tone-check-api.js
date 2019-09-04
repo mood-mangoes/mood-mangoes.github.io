@@ -60,4 +60,3 @@ export function addMessage(messageInput) {
         body: JSON.stringify(messageInput)
     });
 }
-
