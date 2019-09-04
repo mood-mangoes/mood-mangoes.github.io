@@ -6,19 +6,18 @@ class ResultsList extends Component {
         const textResults = this.props.textResults;
         const documentResults = this.props.documentResults;
         const sentenceResults = this.props.sentenceResults;
+        console.log(textResults);
 
         textResults.forEach(textResult => {
             const textProps = { textResult };
-            const resultItem = new ResultItem(textProps);
+            const resultItem = new ResultItem({ 
+                textResults: textProps,
+                documentResults: documentResults,
+                sentenceResults: sentenceResults
+    
+            });
 
             dom.appendChild(resultItem.renderDOM());
-            
-            documentResults.forEach(documentResult => {
-                resultItem.update(documentResult);
-            });
-            sentenceResults.forEach(sentenceResult => {
-                resultItem.update(sentenceResult);
-            });
         });
         
     }

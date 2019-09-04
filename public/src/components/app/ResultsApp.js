@@ -15,15 +15,12 @@ class ResultsApp extends Component {
 
         });
         dom.appendChild(resultsList.renderDOM());
-        console.log(getTextResults());
-        console.log(getDocumentResults());
-        console.log(getSentenceResults());
 
         getTextResults().then(textResults => {
             resultsList.update({ textResults });
         });
         getDocumentResults().then(documentResults => {
-            resultsList.props.documentResults = { documentResults };
+            resultsList.update({ documentResults });
         });
         getSentenceResults().then(sentenceResults => {
             resultsList.update({ sentenceResults });
