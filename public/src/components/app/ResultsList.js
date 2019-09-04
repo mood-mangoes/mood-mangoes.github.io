@@ -5,11 +5,11 @@ class ResultsList extends Component {
     onRender(dom) {
         const results = this.props.results;
 
-        // results.forEach(result => {
-        //     const props = { result };
-        //     const resultItem = new ResultItem(props);
-        //     dom.appendChild(resultItem.renderDOM());
-        // });
+        results.forEach(result => {
+            const props = { result };
+            const resultItem = new ResultItem(props);
+            dom.appendChild(resultItem.renderDOM());
+        });
     }
     renderHTML() {
         return /*html*/`
