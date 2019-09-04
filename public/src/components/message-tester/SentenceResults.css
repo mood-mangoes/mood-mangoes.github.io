@@ -1,0 +1,47 @@
+p {
+    display: inline-block;
+}
+
+.fear {
+    border: solid 1px darkred;
+    background-color: darkred;
+}
+
+.anger {
+    border: solid 1px red;
+    background-color: red;
+}
+
+.sadness {
+    border: solid 1px blue;
+    background-color: blue;
+}
+
+.analytical {
+    border: solid 1px purple;
+    background-color: purple;
+}
+
+.tentative {
+    border: solid 1px orange;
+    background-color: orange;
+}
+
+.joy {
+    border: solid 1px yellow;
+    background-color: yellow;
+}
+
+.confident {
+    border: solid 1px green;
+    background-color: green;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 5px;
+}
