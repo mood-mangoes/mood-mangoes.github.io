@@ -3,13 +3,24 @@ import ResultItem from './ResultItem.js';
 
 class ResultsList extends Component {
     onRender(dom) {
-        const results = this.props.results;
+        const textResults = this.props.textResults;
+        const documentResults = this.props.documentResults;
+        const sentenceResults = this.props.sentenceResults;
 
-        results.forEach(result => {
-            const props = { result };
-            const resultItem = new ResultItem(props);
+        textResults.forEach(textResult => {
+            const textProps = { textResult };
+            const resultItem = new ResultItem(textProps);
+
             dom.appendChild(resultItem.renderDOM());
+            
+            documentResults.forEach(documentResult => {
+                resultItem.update(documentResult);
+            });
+            sentenceResults.forEach(sentenceResult => {
+                resultItem.update(sentenceResult);
+            });
         });
+        
     }
     renderHTML() {
         return /*html*/`
