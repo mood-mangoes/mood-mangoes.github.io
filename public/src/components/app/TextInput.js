@@ -1,11 +1,14 @@
 import Component from '../Component.js';
 import { addMessage } from '../../services/tone-check-api.js';
+import LegendItem from '../message-tester/LegendItem.js';
+import SentenceResults from '../message-tester/SentenceResults.js';
 
 class TextInput extends Component {
     onRender(dom) {
         // const onAdd = this.props.onAdd;
         const analyzeButton = dom.querySelector('button');
         const textArea = dom.querySelector('textarea');
+
         analyzeButton.addEventListener('click', (event) => {
             event.preventDefault();
             
@@ -15,8 +18,21 @@ class TextInput extends Component {
 
             addMessage(messageInput)
                 .then(result => {
-                    // eslint-disable-next-line no-console
-                    console.log(result);
+
+                    this.props.documentResult = result.document;
+                    this.props.sentenceResult = result.sentences;
+                    console.log(this.props.sentenceResult);
+                    this.props.messageInput = messageInput;
+
+                    this.props.documentResult.forEach(tone => {
+                        const props = { tone };
+                        const legendItem = new LegendItem(props);
+                        const legend = dom.querySelector('#legend');
+                        legend.appendChild(legendItem.renderDOM());
+                    });
+                    const sentenceResults = new SentenceResults(this.props);
+                    const resultsSection = dom.querySelector('#results-section');
+                    resultsSection.appendChild(sentenceResults.renderDOM());
                 })
                 .catch(err => {
                     // eslint-disable-next-line no-console
@@ -26,12 +42,19 @@ class TextInput extends Component {
     }
     renderHTML() {
         return /*html*/`
+        <main>
         <section id="message-input">
             <form>
             <textarea id="message" name="message"></textarea>
             <button id="analyze-button">Analyze</button>
             </form>
         </section>
+        <section id="results-section">
+            <h2>Results</h2>
+            <div id="legend">
+            </div>
+        </section>
+        </main>
         `;
     }
 }
