@@ -188,3 +188,44 @@ footer {
     text-align: center;
     margin-top: 15px;
 }
+
+#legend {
+    display: flex;
+    background-color: #00a99d;
+    border-radius: 10px;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-weight: bold;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.emoji {
+    font-size: 40px;
+    margin: 0;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+#sentence-results {
+    margin-top: 50px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #00a99d;
+    font-size: 18px;
+    padding: 20px;
+    font-family: Heebo;
+    text-align: left;
+}
+
+.tone-id {
+    text-transform: capitalize;
+}
