@@ -1,20 +1,39 @@
 import Component from '../Component.js';
+import DocumentResultItem from './DocumentResultItem.js';
 
 class ResultItem extends Component {
+
+    onRender(dom) {
+        // const textResult = this.props.textResult;
+        const documentResults = this.props.documentResults;
+        // const sentenceResult = this.props.sentenceResult;
+        console.log(documentResults.text_id);
+        console.log(this.props.textResults.textResult.id);
+
+        for(let i = 0; i < documentResults.length; i ++) {
+            if(documentResults[i].text_id === this.props.textResults.textResult.id) {
+                const documentResultItem = new DocumentResultItem({ documentResults });
+                dom.appendChild(documentResultItem.renderDOM());
+            }
+        }
+
+        // while(documentResults.text_id === this.props.textResults.textResult.id) {
+        //     const documentResultItem = new DocumentResultItem({ documentResults });
+        //     dom.appendChild(documentResultItem.renderDOM());
+        // }
+        
+    }
+
     renderHTML() {
-        const textResult = this.props.textResult;
-        const documentResult = this.props.documentResult;
-        const sentenceResult = this.props.sentenceResult;
 
         //console.log('props', this.props.documentResults[0]['tone_id']);
-        if(this.props.documentResults[0]) {
+        if(this.props.documentResults) {
 
             return /*html*/`
-            <li>
-            <p>${this.props.textResults.textResult.body}</p>
-            <p>${this.props.documentResults[0]['tone_id']} ${this.props.documentResults[0].score}</p>
-            <p>sentence results</p>
-            </li>
+                <li>
+                    <p>${this.props.textResults.textResult.body}</p>
+                    <p>sentence results</p>
+                </li>
             `;
         }
         else {
