@@ -20,6 +20,9 @@ class AuthApp extends Component {
 
         const header = new Header();
         dom.prepend(header.renderDOM());
+        // const logoutButton = dom.querySelector('#log-out');
+        console.log(location.pathname);
+        // logoutButton.classList.add('no-display');
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());

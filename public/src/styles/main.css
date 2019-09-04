@@ -164,6 +164,14 @@ footer {
     left: 0;
 }
 
+.no-display {
+    display: none;
+}
+
+#log-out.no-display{
+    display: none;
+}
+
 @media only screen and (max-width: 650px) {
     header {flex-direction: column;}
     nav {display: flex;
@@ -178,9 +186,6 @@ footer {
         margin-top: 50px;}
     main {padding-top: 20px;}
     #signup-button {width: 175px;}
-}
-.no-display {
-    display: none;
 }
 
 .errors {
