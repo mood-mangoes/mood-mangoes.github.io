@@ -13,7 +13,6 @@ class NewComponent extends Component {
         dom.appendChild(textInput.renderDOM());
     }
 
-
     renderHTML() {
         return /*html*/`
             <div>

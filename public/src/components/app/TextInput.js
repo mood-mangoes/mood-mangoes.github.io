@@ -7,7 +7,6 @@ class TextInput extends Component {
         const analyzeButton = dom.querySelector('button');
         const textArea = dom.querySelector('textarea');
         analyzeButton.addEventListener('click', (event) => {
-            // console.log('this is firing');
             event.preventDefault();
             
             const messageInput = {
@@ -15,10 +14,12 @@ class TextInput extends Component {
             };
 
             addMessage(messageInput)
-                .then(() => {
-                    console.log(messageInput);
+                .then(result => {
+                    // eslint-disable-next-line no-console
+                    console.log(result);
                 })
                 .catch(err => {
+                    // eslint-disable-next-line no-console
                     console.log('no message input', err);
                 });
         });

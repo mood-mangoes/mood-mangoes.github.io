@@ -10,7 +10,6 @@ class Header extends Component {
             store.removeToken();
             window.location = 'auth.html';
         });
-
     }
 
     renderHTML() {

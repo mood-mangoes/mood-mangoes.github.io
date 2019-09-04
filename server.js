@@ -5,7 +5,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 const client = require('./lib/client');
 
-
 client.connect();
 
 const ensureAuth = require('./lib/auth/ensure-auth');
@@ -48,11 +47,12 @@ const toneAnalyzer = new ToneAnalyzerV3({
     version: '2017-09-21',
 });
 
-const documentResults = [];
-const sentenceResults = [];
-let fullResults;
 
 app.post('/api/tone_check', (req, res) => { 
+    const documentResults = [];
+    const sentenceResults = [];
+    let fullResults;
+
     const toneParams = {
         tone_input: { 'text': req.body.message },
         content_type: 'application/json'
@@ -101,14 +101,12 @@ app.post('/api/tone_check', (req, res) => {
                         });
                 }));
             }));
-            // console.log(fullResults.document_tone.tones);
         })
         .then(() => {
             res.json({
                 document: documentResults,
                 sentences: sentenceResults
             });
-
         });
 });
 

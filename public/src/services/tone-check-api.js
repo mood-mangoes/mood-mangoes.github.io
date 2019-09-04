@@ -50,30 +50,6 @@ export function userSignIn(credentials) {
     });
 }
 
-// export function getToneResults(res) {
-//     const ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
-//     const toneAnalyzer = new ToneAnalyzerV3({
-//         version: '2017-09-21',
-//     });
-
-//     const text = 'I hate you! :(';
-
-//     const toneParams = {
-//         tone_input: { 'text': text },
-//         content_type: 'application/json'
-//     };
-
-//     toneAnalyzer.tone(toneParams)    
-//         .then(result => {
-//             res.json(result, null, 2);
-//         })
-//         .catch(err => {
-//             res.status(500).json({
-//                 error: err.message || err
-//             });
-//         });
-// }
-
 export function addMessage(messageInput) {
     const url = `${URL}/tone_check`;
     return fetchWithError(url, {
