@@ -11,8 +11,6 @@ class ResultsApp extends Component {
         const resultsList = new ResultsList({ 
             textResults: [],
             documentResults: [],
-            sentenceResults: []
-
         });
         dom.appendChild(resultsList.renderDOM());
 
@@ -22,10 +20,6 @@ class ResultsApp extends Component {
         getDocumentResults().then(documentResults => {
             resultsList.update({ documentResults });
         });
-        getSentenceResults().then(sentenceResults => {
-            resultsList.update({ sentenceResults });
-        });
-
     } 
     renderHTML() {
         return /*html*/`
