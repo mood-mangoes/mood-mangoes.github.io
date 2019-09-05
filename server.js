@@ -150,6 +150,24 @@ app.get('/api/tone_check/text', (req, res) => {
         });
 });
 
+app.get('/api/tone_check/allText', (req, res) => {
+    client.query(`
+        SELECT 
+            *
+        FROM text 
+        ORDER BY id DESC;
+    `
+    )
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
 app.get('/api/tone_check/sentence', (req, res) => {
     client.query(`
         SELECT 
