@@ -135,7 +135,7 @@ form h2 {
     color: white;
 }
 
-#message-input, #results-section {
+#message-input, #results-section, #sentence-results-box {
     width: 70%;
     margin: 0 auto 50px; 
     text-align: center;
