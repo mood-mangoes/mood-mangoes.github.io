@@ -9,16 +9,19 @@ class ResultItem extends Component {
         for(let i = 0; i < documentResults.length; i ++) {
             if(documentResults[i].text_id === this.props.textResults.textResult.id) {
                 const documentResultItem = new DocumentResultItem({ documentResults: documentResults[i] });
-                dom.appendChild(documentResultItem.renderDOM());
+                const toneIdDiv = dom.querySelector('.tone-id-div');
+                toneIdDiv.appendChild(documentResultItem.renderDOM());
             }
-        }       
+        }     
     }
+
 
     renderHTML() {
         if(this.props.documentResults) {
             return /*html*/`
-                <li>
-                    <p>${this.props.textResults.textResult.body}</p>
+                <li class="result-item-flex">
+                    <p class="body">${this.props.textResults.textResult.body}</p>
+                    <div class="tone-id-div"></div>
                 </li>
             `;
         }

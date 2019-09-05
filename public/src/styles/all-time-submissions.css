@@ -1,0 +1,38 @@
+.tone-id-div {
+    background-color: #00a99d;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.emoji-box {
+    display: flex;
+    color: white;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.tone-id {
+    text-transform: capitalize;
+    font-family: Francois One;
+}
+
+.result-item-flex {
+    display: flex;
+    background-color: #eee;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 35px;
+}
+
+.body {
+    color: rgb(71, 71, 71);
+    padding: 30px;
+    margin: 0;
+}

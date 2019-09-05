@@ -19,8 +19,11 @@ class ResultsList extends Component {
     }
     renderHTML() {
         return /*html*/`
-            <ul>
-            </ul>
+            <main>
+                <ul class="result-list-flex">
+                </ul>
+            </main>
+                
         `;
     }
 }
