@@ -2,6 +2,7 @@ import Component from '../Component.js';
 import Header from './Header.js';
 import ResultsList from './ResultsList.js';
 import { getTextResults, getDocumentResults } from '../../services/tone-check-api.js';
+import Footer from './Footer.js';
 
 class ResultsApp extends Component {
     onRender(dom) {
@@ -20,6 +21,9 @@ class ResultsApp extends Component {
         getDocumentResults().then(documentResults => {
             resultsList.update({ documentResults });
         });
+
+        const footer = new Footer();
+        dom.appendChild(footer.renderDOM());
     } 
     renderHTML() {
         return /*html*/`
