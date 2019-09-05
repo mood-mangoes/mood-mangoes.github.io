@@ -52,8 +52,6 @@ class SentenceResults extends Component {
                 hrTwo.appendChild(toolTipTwo);
             }
         });
-
-
     }
 
     renderHTML() {
