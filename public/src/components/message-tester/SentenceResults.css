@@ -60,14 +60,9 @@ p {
     margin-top: -12px;
 }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip .tooltip-text {
+.tooltip-text {
     visibility: hidden;
-    width: 100px;
+    width: 200px;
     background-color: black;
     color: white;
     text-align: center;
@@ -75,7 +70,11 @@ p {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
+    text-transform: capitalize;
+    font-size: 14px;
 }
+
+
 
 .tooltip:hover .tooltip-text {
     visibility: visible;
