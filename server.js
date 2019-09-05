@@ -130,43 +130,13 @@ app.post('/api/tone_check', (req, res) => {
         });
 });
 
-// app.get('/api/tone_check', (req, res) => {
-//     client.query(`
-//         SELECT 
-//             t.body as text_body,
-//             t.id,
-//             d.text_id as document_text_id,
-//             d.tone_id as document_tone_id,
-//             d.score as document_score,
-//             s.text_id as sentence_text_id,
-//             s.sentence,
-//             s.tone_id as sentence_tone_id,
-//             s.score as sentence_score
-//         FROM text t
-//         INNER JOIN document_results d
-//         ON t.id = d.text_id
-//         INNER JOIN sentence_results s
-//         ON d.text_id = s.text_id
-//         WHERE user_id = $1;
-//     `,
-//     [req.userId]
-//     )
-//         .then(result => {
-//             res.json(result.rows);
-//         })
-//         .catch(err => {
-//             res.status(500).json({
-//                 error: err.message || err
-//             });
-//         });
-// });
-
 app.get('/api/tone_check/text', (req, res) => {
     client.query(`
         SELECT 
             *
         FROM text 
-        WHERE user_id = $1;
+        WHERE user_id = $1
+        ORDER BY id DESC;
     `,
     [req.userId]
     )
