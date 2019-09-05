@@ -3,6 +3,7 @@ import { addMessage } from '../../services/tone-check-api.js';
 import LegendItem from '../message-tester/LegendItem.js';
 import SentenceResults from '../message-tester/SentenceResults.js';
 import Loading from './Loading.js';
+import ColorKey from '../message-tester/ColorKey.js';
 
 class TextInput extends Component {
     onRender(dom) {
@@ -11,8 +12,8 @@ class TextInput extends Component {
         const resultsHeader = dom.querySelector('h2');
         const legendBox = dom.querySelector('#legend');
         const sentenceResultsBox = dom.querySelector('#sentence-results-box');
-
         const main = dom.querySelector('#message-input');
+        const resultsSection = dom.querySelector('#results-section');
 
         analyzeButton.addEventListener('click', (event) => {
             event.preventDefault();
@@ -40,6 +41,10 @@ class TextInput extends Component {
                         const legend = dom.querySelector('#legend');
                         legend.appendChild(legendItem.renderDOM());
                     });
+
+                    const colorKey = new ColorKey();
+                    resultsSection.appendChild(colorKey.renderDOM());
+                    
                     const sentenceResults = new SentenceResults(this.props);
                     sentenceResultsBox.appendChild(sentenceResults.renderDOM());
                 })
