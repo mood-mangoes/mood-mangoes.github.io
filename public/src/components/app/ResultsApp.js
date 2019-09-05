@@ -1,7 +1,7 @@
 import Component from '../Component.js';
 import Header from './Header.js';
 import ResultsList from './ResultsList.js';
-import { getTextResults, getDocumentResults } from '../../services/tone-check-api.js';
+import { getTextResults, getDocumentResults, getSentenceResults } from '../../services/tone-check-api.js';
 import Footer from './Footer.js';
 
 class ResultsApp extends Component {
@@ -12,6 +12,7 @@ class ResultsApp extends Component {
         const resultsList = new ResultsList({ 
             textResults: [],
             documentResults: [],
+            sentenceResults: []
         });
         dom.appendChild(resultsList.renderDOM());
 
@@ -20,6 +21,9 @@ class ResultsApp extends Component {
         });
         getDocumentResults().then(documentResults => {
             resultsList.update({ documentResults });
+        });
+        getSentenceResults().then(sentenceResults => {
+            resultsList.update({ sentenceResults });
         });
 
         const footer = new Footer();
