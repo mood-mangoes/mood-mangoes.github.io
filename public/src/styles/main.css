@@ -255,6 +255,11 @@ footer {
     margin-top: 50px;
 }
 
+.emoji-box {
+    display: flex;
+    align-items: center;
+}
+
 @media only screen and (max-width: 650px) {
     header {flex-direction: column;}
     h2 {margin-top: 0px;}
