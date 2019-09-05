@@ -24,7 +24,7 @@ class AllUsersResultsApp extends Component {
         });
         getSentenceResults().then(sentenceResults => {
             resultsList.update({ sentenceResults });
-        })
+        });
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());

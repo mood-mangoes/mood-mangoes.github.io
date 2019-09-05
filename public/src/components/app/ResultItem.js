@@ -23,8 +23,8 @@ class ResultItem extends Component {
             }
         }
 
-        const button = dom.querySelector('button');
-        button.addEventListener('click', event => {
+        const sentenceResultButton = dom.querySelector('.sentence-result-button');
+        sentenceResultButton.addEventListener('click', event => {
             event.preventDefault();
             sentenceResultDiv.classList.toggle('no-display');
         });
@@ -40,7 +40,9 @@ class ResultItem extends Component {
                         <div class="tone-id-div"></div>
                         <div class="sentence-result-div no-display"></div>
                     </li>
-                    <button>Sentence Results</button>
+                    <div class="button-container">
+                        <button class="sentence-result-button">Sentence Results</button>
+                    </div>
                 </section>
             `;
         }
