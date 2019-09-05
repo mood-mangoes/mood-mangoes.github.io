@@ -21,7 +21,6 @@ class TextInput extends Component {
 
                     this.props.documentResult = result.document;
                     this.props.sentenceResult = result.sentences;
-                    console.log(this.props.sentenceResult);
                     this.props.messageInput = messageInput;
 
                     this.props.documentResult.forEach(tone => {
