@@ -74,6 +74,18 @@
     visibility: visible;
 }
 
+#sentence-results {
+    margin-top: 25px;
+    margin-bottom: 100px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #00a99d;
+    font-size: 18px;
+    padding: 20px;
+    font-family: Heebo;
+    text-align: left;
+}
+
 @media only screen and (max-width: 650px) {
     .emoji {font-size: 25px; padding-left: 8px; padding-right: 8px;}
 }

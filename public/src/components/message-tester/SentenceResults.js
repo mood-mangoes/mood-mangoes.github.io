@@ -56,7 +56,7 @@ class SentenceResults extends Component {
 
     renderHTML() {
         let string = this.props.messageInput.message;
-        string = string.replace(/.(?=[A-Z])/g, '</p><p>');
+        string = string.replace(/[!?.]+(?=$|\s)/g, '</p><p>');
 
         return /*html*/`
         <div id="sentence-results">
