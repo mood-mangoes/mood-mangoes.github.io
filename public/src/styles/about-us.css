@@ -2,10 +2,28 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.about-us-div {
+    display: flex;
+    align-items: center;
 }
 
 section {
     margin: 20px;
+}
+
+.about-us-img {
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+    border-radius: 100%;
+}
+
+.about-us-p {
+    margin-left: 25px;
 }
 
 section > img {
@@ -14,4 +32,12 @@ section > img {
 
 .bottom {
     margin-bottom: 100px;
+}
+
+@media only screen and (max-width: 650px) {
+    .about-us-div{display: flex; flex-direction: column;}
+    .about-us-h2{text-align: center;}
+    .about-us-p{margin: 15px 0px 0px 0px;}
+    main {width: 90%; margin: 0 auto;}
+
 }
