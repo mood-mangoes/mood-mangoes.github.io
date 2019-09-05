@@ -20,15 +20,15 @@ nav a {
 
 .loading-container {
     position: absolute;
-    top: 70%;
-    opacity: 0.75;
-    margin: auto;
-    left: 43%;
-}
+    top: 45%;
+    left: 45%;
+    margin: -50px 0px 0px -50px;
+    opacity: 0.85;
+    }
 
 .loading-image {
-    height: 75%;
-    width: 75%;
+    height: 90%;
+    width: 90%;
 }
 
 nav a:hover {
@@ -272,8 +272,8 @@ footer {
     #signup-button {width: 175px;}
     #signin-button {width: 175px;}
     #analyze-button {width: 220px;}
-    .loading-image {height: 30%; width: 30%;}
-    .loading-container {left: 23%; top: 75%;}
+    .loading-image {height: 50%; width: 50%;}
+    .loading-container {left: 35%; top: 75%;}
     #message {margin-top: 35px;}
     p.tone-id {font-size: 14px; margin-bottom: 0;}
     .emoji-box {display: flex; flex-direction: column;}
