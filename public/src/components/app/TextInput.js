@@ -2,6 +2,7 @@ import Component from '../Component.js';
 import { addMessage } from '../../services/tone-check-api.js';
 import LegendItem from '../message-tester/LegendItem.js';
 import SentenceResults from '../message-tester/SentenceResults.js';
+import Loading from './Loading.js';
 
 class TextInput extends Component {
     onRender(dom) {
@@ -12,8 +13,16 @@ class TextInput extends Component {
         const legendBox = dom.querySelector('#legend');
         const sentenceResultsBox = dom.querySelector('#sentence-results-box');
 
+        const main = dom.querySelector('#message-input');
+        console.log(main);
+
         analyzeButton.addEventListener('click', (event) => {
             event.preventDefault();
+
+            const loading = new Loading({ loading: true });
+            console.log(loading);
+            main.appendChild(loading.renderDOM());
+
             legendBox.innerHTML = '';
             sentenceResultsBox.innerHTML = '';
             
@@ -40,6 +49,11 @@ class TextInput extends Component {
                 .catch(err => {
                     // eslint-disable-next-line no-console
                     console.log('no message input', err);
+                })
+                .finally(() => {
+                    setTimeout(() => {
+                        loading.update({ loading: false });
+                    }, 200);
                 });
         });
     }
