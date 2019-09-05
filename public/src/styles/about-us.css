@@ -17,17 +17,12 @@ section {
 
 .about-us-img {
     height: 200px;
-    width: 200px;
     object-fit: contain;
     border-radius: 100%;
 }
 
 .about-us-p {
     margin-left: 25px;
-}
-
-section > img {
-    height: 150px;
 }
 
 .bottom {

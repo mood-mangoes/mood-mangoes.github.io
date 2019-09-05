@@ -23,7 +23,12 @@ nav a {
     top: 70%;
     opacity: 0.75;
     margin: auto;
-    left: 44%;
+    left: 43%;
+}
+
+.loading-image {
+    height: 75%;
+    width: 75%;
 }
 
 nav a:hover {
@@ -39,6 +44,18 @@ main {
     width: 70%;
     max-width: 750px;
     margin: 0 auto 40px;
+}
+
+.blurb-p {
+    margin-bottom: 0px;
+}
+
+#blurb-area-tester {
+    text-align: center;
+    width: 70%;
+    max-width: 750px;
+    margin: 0 auto 40px;
+    margin-bottom: 0px;
 }
 
 header img {
@@ -215,7 +232,7 @@ footer {
 }
 
 #sentence-results {
-    margin-top: 50px;
+    margin-top: 25px;
     margin-bottom: 100px;
     width: 100%;
     border-radius: 8px;
@@ -228,6 +245,14 @@ footer {
 
 .tone-id {
     text-transform: capitalize;
+}
+
+#message {
+    margin-top: 0px;
+}
+
+.blurb-h2 {
+    margin-top: 50px;
 }
 
 @media only screen and (max-width: 650px) {
