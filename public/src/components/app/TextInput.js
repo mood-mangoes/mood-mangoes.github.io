@@ -5,12 +5,17 @@ import SentenceResults from '../message-tester/SentenceResults.js';
 
 class TextInput extends Component {
     onRender(dom) {
-        // const onAdd = this.props.onAdd;
         const analyzeButton = dom.querySelector('button');
         const textArea = dom.querySelector('textarea');
+        const resultsHeader = dom.querySelector('h2');
+        const resultsSection = dom.querySelector('#results-section');
+        const legendBox = dom.querySelector('#legend');
+        const sentenceResultsBox = dom.querySelector('#sentence-results-box');
 
         analyzeButton.addEventListener('click', (event) => {
             event.preventDefault();
+            legendBox.innerHTML = '';
+            sentenceResultsBox.innerHTML = '';
             
             const messageInput = {
                 message: textArea.value
@@ -21,9 +26,8 @@ class TextInput extends Component {
 
                     this.props.documentResult = result.document;
                     this.props.sentenceResult = result.sentences;
-                    console.log(this.props.sentenceResult);
                     this.props.messageInput = messageInput;
-
+                    resultsHeader.classList.remove('no-display');
                     this.props.documentResult.forEach(tone => {
                         const props = { tone };
                         const legendItem = new LegendItem(props);
@@ -31,8 +35,7 @@ class TextInput extends Component {
                         legend.appendChild(legendItem.renderDOM());
                     });
                     const sentenceResults = new SentenceResults(this.props);
-                    const resultsSection = dom.querySelector('#results-section');
-                    resultsSection.appendChild(sentenceResults.renderDOM());
+                    sentenceResultsBox.appendChild(sentenceResults.renderDOM());
                 })
                 .catch(err => {
                     // eslint-disable-next-line no-console
@@ -50,9 +53,11 @@ class TextInput extends Component {
             </form>
         </section>
         <section id="results-section">
-            <h2>Results</h2>
+            <h2 class="no-display">Results</h2>
             <div id="legend">
             </div>
+        </section>
+        <section id="sentence-results-box">
         </section>
         </main>
         `;
