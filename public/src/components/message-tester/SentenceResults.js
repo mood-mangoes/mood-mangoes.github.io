@@ -23,18 +23,25 @@ class SentenceResults extends Component {
                 const hr = document.createElement('hr');
                 hr.classList.add('first-hr');
                 hr.classList.add(toneArray[0]);
+                hr.classList.add('tooltip');
                 sentence.appendChild(hr);
-
+                const toolTip = document.createElement('span');
+                toolTip.classList.add('tooltip-text');
+                toolTip.textContent = 'toneArray[0]: ';
+                hr.appendChild(toolTip);
+                
             }
             if(toneArray.length === 2) {
                 const hr = document.createElement('hr');
                 hr.classList.add('first-hr');
                 hr.classList.add(toneArray[0]);
+                hr.classList.add('tooltip');
                 sentence.appendChild(hr);
-
+                
                 const hrTwo = document.createElement('hr');
                 hrTwo.classList.add('second-hr');
                 hrTwo.classList.add(toneArray[1]);
+                hr.classList.add('tooltip');
                 sentence.appendChild(hrTwo);
             }
         });
