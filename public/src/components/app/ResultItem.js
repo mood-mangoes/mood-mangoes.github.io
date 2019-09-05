@@ -7,6 +7,7 @@ class ResultItem extends Component {
     onRender(dom) {
         const documentResults = this.props.documentResults;
         const sentenceResults = this.props.sentenceResults;
+        const sentenceResultDiv = dom.querySelector('.sentence-result-div');
 
         for(let i = documentResults.length - 1; i >= 0 ; i --) {
             if(documentResults[i].text_id === this.props.textResults.textResult.id) {
@@ -18,21 +19,29 @@ class ResultItem extends Component {
         for(let i = sentenceResults.length - 1; i >= 0; i--) {
             if(sentenceResults[i].text_id === this.props.textResults.textResult.id) {
                 const sentenceResultItem = new SentenceResultItem({ sentenceResults: sentenceResults[i] });
-                const sentenceResultDiv = dom.querySelector('.sentence-result-div');
                 sentenceResultDiv.appendChild(sentenceResultItem.renderDOM());
             }
         }
+
+        const button = dom.querySelector('button');
+        button.addEventListener('click', event => {
+            event.preventDefault();
+            sentenceResultDiv.classList.toggle('no-display');
+        });
     }
 
 
     renderHTML() {
         if(this.props.documentResults) {
             return /*html*/`
-                <li class="result-item-flex">
-                    <p class="body">${this.props.textResults.textResult.body}</p>
-                    <div class="tone-id-div"></div>
-                    <div class="sentence-result-div"></div>
-                </li>
+                <section>
+                    <li class="result-item-flex">
+                        <p class="body">${this.props.textResults.textResult.body}</p>
+                        <div class="tone-id-div"></div>
+                        <div class="sentence-result-div no-display"></div>
+                    </li>
+                    <button>Sentence Results</button>
+                </section>
             `;
         }
         else {
