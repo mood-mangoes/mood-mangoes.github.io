@@ -8,15 +8,19 @@ class AboutUsApp extends Component {
         const header = new Header();
         dom.prepend(header.renderDOM());
 
+        const main = dom.querySelector('main');
         const aboutUs = new AboutUs();
-        dom.appendChild(aboutUs.renderDOM());
+        main.appendChild(aboutUs.renderDOM());
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
     }
     renderHTML() {
         return /*html*/`
-            <div></div>
+            <div>
+                <main class="about-us">
+                </main>
+            </div>
         `;
     }
 }
