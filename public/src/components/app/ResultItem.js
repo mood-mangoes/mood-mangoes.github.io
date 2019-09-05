@@ -6,7 +6,7 @@ class ResultItem extends Component {
     onRender(dom) {
         const documentResults = this.props.documentResults;
 
-        for(let i = 0; i < documentResults.length; i ++) {
+        for(let i = documentResults.length - 1; i >= 0 ; i --) {
             if(documentResults[i].text_id === this.props.textResults.textResult.id) {
                 const documentResultItem = new DocumentResultItem({ documentResults: documentResults[i] });
                 const toneIdDiv = dom.querySelector('.tone-id-div');
