@@ -90,3 +90,13 @@ export function getDocumentResults() {
         },
     });
 }
+
+export function getAllTextResults() {
+    const url = `${URL}/tone_check/allText`;
+    return fetchWithError(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+}
