@@ -12,6 +12,15 @@
     color: white;
 }
 
+.sentence-result {
+    display: flex;
+    justify-content: space-between;
+}
+
+.score-container {
+    display: flex;
+}
+
 main {
     width: 80%;
     margin: 0 auto;
@@ -36,4 +45,23 @@ main {
     color: rgb(71, 71, 71);
     padding: 30px;
     margin: 0;
+}
+
+.sentence-result-button {
+    align-content: center;
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 200px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 0;
+    background-color: #f38d52;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
 }
