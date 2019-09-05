@@ -1,3 +1,19 @@
+## Tone Check
+### Team Members
+- Abbey Masters
+- Allison Busse
+- Even Andrewson
+- Alex Spencer
+
+### Project Description 
+Leveraging the IBM Watson Tone Analyzer API, we'll provide users an empty slate to paste text, and in turn, give them analysis of that text. The page will require user login and authentication, have a page for user text insertion, and showcase the user's historical submission history. 
+
+In order to create this app, we'll need to install the IBM Watson Tone Analyzer NodeJS package. Different than other APIs, this will require the API call from the back-end, as opposed to the front-end. 
+
+### Problem Domain
+
+### Developer Instructions
+
 ## Features
 ### MVP
 - Testing text
@@ -32,5 +48,3 @@ We will all try to be open and honest in our communication at all times but espe
 
 ## Communication Plan
 We will check in as a team every two hours to see how everyone is feeling, if they have enough/too much work, and use it as a chance to bring up any potential issues. 
-
-
