@@ -23,7 +23,7 @@ client.connect()
             CREATE TABLE sentence_results (
                 id SERIAL PRIMARY KEY,
                 text_id INTEGER NOT NULL REFERENCES text(id),
-                sentence VARCHAR(256) NOT NULL,
+                sentence VARCHAR(12800) NOT NULL,
                 tone_id VARCHAR(256) NOT NULL,
                 score DECIMAL(7,6) NOT NULL
             );
