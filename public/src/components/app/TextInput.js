@@ -9,18 +9,15 @@ class TextInput extends Component {
         const analyzeButton = dom.querySelector('button');
         const textArea = dom.querySelector('textarea');
         const resultsHeader = dom.querySelector('h2');
-        const resultsSection = dom.querySelector('#results-section');
         const legendBox = dom.querySelector('#legend');
         const sentenceResultsBox = dom.querySelector('#sentence-results-box');
 
         const main = dom.querySelector('#message-input');
-        console.log(main);
 
         analyzeButton.addEventListener('click', (event) => {
             event.preventDefault();
 
             const loading = new Loading({ loading: true });
-            console.log(loading);
             main.appendChild(loading.renderDOM());
 
             legendBox.innerHTML = '';
