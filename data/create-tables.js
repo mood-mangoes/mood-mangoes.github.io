@@ -12,7 +12,7 @@ client.connect()
             CREATE TABLE text (
                 id SERIAL PRIMARY KEY,
                 user_id INTEGER NOT NULL REFERENCES users(id),
-                body VARCHAR(1024) NOT NULL
+                body VARCHAR(12800) NOT NULL
             );
             CREATE TABLE document_results (
                 id SERIAL PRIMARY KEY,
