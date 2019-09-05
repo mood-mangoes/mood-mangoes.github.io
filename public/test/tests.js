@@ -1,2 +1,2 @@
 import './html-equal.js';
-import './list-item.test.js';
+import './render-results.test.js';
