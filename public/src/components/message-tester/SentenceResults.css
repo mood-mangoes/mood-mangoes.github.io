@@ -59,3 +59,23 @@ p {
     opacity: 0.25;
     margin-top: -12px;
 }
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
