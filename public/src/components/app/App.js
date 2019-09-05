@@ -1,6 +1,7 @@
 import Component from '../Component.js';
 import Header from '../app/Header.js';
 import TextInput from '../app/TextInput.js';
+import Footer from './Footer.js';
 
 class NewComponent extends Component {
 
@@ -9,8 +10,10 @@ class NewComponent extends Component {
         dom.prepend(header.renderDOM());
 
         const textInput = new TextInput();
-        
         dom.appendChild(textInput.renderDOM());
+
+        const footer = new Footer();
+        dom.appendChild(footer.renderDOM());
     }
 
     renderHTML() {
