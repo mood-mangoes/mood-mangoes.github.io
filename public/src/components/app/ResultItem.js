@@ -27,6 +27,7 @@ class ResultItem extends Component {
         sentenceResultButton.addEventListener('click', event => {
             event.preventDefault();
             sentenceResultDiv.classList.toggle('no-display');
+
         });
     }
 

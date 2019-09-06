@@ -28,3 +28,11 @@ textarea {
     margin: 0 auto 50px; 
     text-align: center;
 }
+
+@media only screen and (max-width: 650px) { 
+    #log-out {margin-top: 15px;
+        padding: 6px 15px;}
+    .blurb-h2 {margin-top: 20px;}
+    .blurb-p {margin-top: 0px;}
+    #analyze-button {width: 220px;}
+}

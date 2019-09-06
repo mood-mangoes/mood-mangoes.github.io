@@ -78,3 +78,8 @@ form h2 {
     color: white;
 }
 
+@media only screen and (max-width: 650px) {
+    #signup-button {width: 175px;}
+    #signin-button {width: 175px;}
+}
+

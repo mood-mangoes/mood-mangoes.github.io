@@ -80,6 +80,7 @@ main {
 .tone-id-sentence {
     color: black;
     text-transform: capitalize;
+    font-style: italic;
 }
 
 .sentence-result {
@@ -95,17 +96,22 @@ main {
 }
 
 .max-width {
-    max-width: 675px;
+    max-width: 750px;
     margin-right: 50px;
-    /* flex-grow: 1; */
-    /* overflow-wrap: 50car; */
+}
+
+.sentence-result-div {
+    animation-name: sentence-result;
+    animation-timing-function: ease;
 }
 
 @media only screen and (max-width: 650px) {
     .emoji-box {display: flex; flex-direction: column; justify-items: center;}
     .emoji {margin: 0;}
     .tone-id {margin-top: 5px;}
-    .score-container {display: flex; flex-direction: column; align-items: center;}
-    .tone-id-sentence {margin:0px;}
-    .results-sentence: {flex-grow: 1;}
+    .tone-id-sentence {font-style: italic; font-size: 12px; margin:0px; margin-right: 5px;}
+    .results-sentence {text-align: center; font-weight: bold; font-size: 12px;}
+    .sentence-result {display: flex; flex-direction: column; align-content: center; margin-top: 5px;}
+    .max-width {max-width: 100%; margin-right: 0px;}
+    #log-out {margin-top: 15px;}
 }

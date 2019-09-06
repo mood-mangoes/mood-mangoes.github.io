@@ -19,10 +19,10 @@ class Header extends Component {
             <header>
                 <img src="./assets/tonechecklogo.png">
                 <nav>
-                    <a href="/index.html">Tester</a>
-                    <a href="/results.html">Past Submissions</a>
-                    <a href="/all-users-results.html">All User Submissions</a>
-                    <a href="/about-us.html">About Us</a>
+                    <a class="nav-a" href="/index.html">Tester</a>
+                    <a class="nav-a" href="/results.html">Past Submissions</a>
+                    <a class="nav-a" href="/all-users-results.html">All User Submissions</a>
+                    <a class="nav-a" href="/about-us.html">About Us</a>
                 </nav>
                 <button id="log-out">Log Out</button>
             </header>
