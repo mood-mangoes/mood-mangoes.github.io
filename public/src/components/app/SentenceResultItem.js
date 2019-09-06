@@ -18,9 +18,11 @@ class SentenceResultItem extends Component {
         return /*html*/`
         
             <div class="sentence-result">
-                <p>${this.props.sentenceResults.sentence}</p>
+                <div class="max-width">
+                <p class="results-sentence">${this.props.sentenceResults.sentence}</p>
+                </div>
                 <div class="score-container">
-                    <p class="tone-id">${this.props.sentenceResults['tone_id']} ${newScore}</p>
+                    <p class="tone-id-sentence">${this.props.sentenceResults['tone_id']} ${newScore}</p>
                     <p class="emoji">${emojis[this.props.sentenceResults['tone_id']]}</p>
                 </div>
             </div>            
