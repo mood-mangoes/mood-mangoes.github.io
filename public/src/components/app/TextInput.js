@@ -14,6 +14,7 @@ class TextInput extends Component {
         const sentenceResultsBox = dom.querySelector('#sentence-results-box');
         const main = dom.querySelector('#message-input');
         const resultsSection = dom.querySelector('#results-section');
+        const colorKeyContainer = dom.querySelector('.color-key');
 
         analyzeButton.addEventListener('click', (event) => {
             event.preventDefault();
@@ -23,6 +24,7 @@ class TextInput extends Component {
 
             legendBox.innerHTML = '';
             sentenceResultsBox.innerHTML = '';
+            colorKeyContainer.innerHTML = '';
             
             const messageInput = {
                 message: textArea.value
@@ -43,7 +45,7 @@ class TextInput extends Component {
                     });
 
                     const colorKey = new ColorKey();
-                    resultsSection.appendChild(colorKey.renderDOM());
+                    colorKeyContainer.appendChild(colorKey.renderDOM());
                     
                     const sentenceResults = new SentenceResults(this.props);
                     sentenceResultsBox.appendChild(sentenceResults.renderDOM());
@@ -71,6 +73,8 @@ class TextInput extends Component {
         <section id="results-section">
             <h2 class="no-display">Results</h2>
             <div id="legend">
+            </div>
+            <div class="color-key">
             </div>
         </section>
         <section id="sentence-results-box">
