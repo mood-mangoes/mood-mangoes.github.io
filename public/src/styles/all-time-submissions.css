@@ -1,0 +1,109 @@
+.tone-id-div {
+    background-color: #00a99d;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 60px;
+}
+
+.sentence-result {
+    display: flex;
+    justify-content: space-between;
+}
+
+.score-container {
+    display: flex;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+
+.tone-id {
+    text-transform: capitalize;
+    font-family: Francois One;
+    margin: 0;
+    color: white;
+}
+
+.result-item-flex {
+    display: flex;
+    background-color: #eee;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 35px;
+}
+
+.body {
+    color: rgb(71, 71, 71);
+    padding: 30px;
+    margin: 0;
+}
+
+.sentence-result-button {
+    align-content: center;
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 200px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 0;
+    background-color: #f38d52;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.emoji {
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+.tone-id-sentence {
+    color: black;
+    text-transform: capitalize;
+    font-style: italic;
+}
+
+.sentence-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.score-container {
+    display: flex;
+    align-items: center;
+}
+
+.max-width {
+    max-width: 750px;
+    margin-right: 50px;
+}
+
+.sentence-result-div {
+    animation-name: sentence-result;
+    animation-timing-function: ease;
+}
+
+@media only screen and (max-width: 650px) {
+    .emoji-box {display: flex; flex-direction: column; justify-items: center;}
+    .emoji {margin: 0;}
+    .tone-id {margin-top: 5px;}
+    .tone-id-sentence {font-style: italic; font-size: 12px; margin:0px; margin-right: 5px;}
+    .results-sentence {text-align: center; font-weight: bold; font-size: 12px;}
+    .sentence-result {display: flex; flex-direction: column; align-content: center; margin-top: 5px;}
+    .max-width {max-width: 100%; margin-right: 0px;}
+    #log-out {margin-top: 15px;}
+}

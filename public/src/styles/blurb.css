@@ -1,0 +1,22 @@
+#blurb-area {
+    text-align: center;
+    width: 70%;
+    max-width: 750px;
+    margin: 0 auto 40px;
+}
+
+.blurb-p {
+    margin-bottom: 0px;
+}
+
+#blurb-area-tester {
+    text-align: center;
+    width: 70%;
+    max-width: 750px;
+    margin: 0 auto 40px;
+    margin-bottom: 0px;
+}
+
+.blurb-h2 {
+    margin-top: 50px;
+}

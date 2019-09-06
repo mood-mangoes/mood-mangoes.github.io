@@ -1,0 +1,85 @@
+.form-container {
+    margin: 0 auto;
+    margin-bottom: 100px;
+    width: 35%;
+    max-width: 535px;
+    min-width: 275px;
+    padding: 40px 50px;
+    background-color: #00a99d;
+    font-size: 14px;
+    color: white;
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sign-up, #log-out, #analyze-button {
+    align-self: center;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 100px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 0;
+    background-color: #f38d52;
+}
+
+.switch {
+    text-align: center;
+}
+
+#signin-button, #signup-button {
+    margin-top: 20px;
+    padding: 8px 15px;
+    width: 200px;
+    border-radius: 8px;
+    color: white;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 0;
+    background-color: #426da9;
+}
+
+#signin-button:hover, #signup-button:hover {
+    box-shadow: 1px 1px 2px #667;
+}
+
+
+.sign-up:hover {
+    box-shadow: 1px 1px 2px #667;
+}
+
+label {
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+form input {
+    width: 95%;
+    margin: 0 auto;
+    height: 25px;
+    border-radius: 6px;
+    border: 0;
+    padding: 8px;
+    font-family: Heebo;
+}
+
+form h2 {
+    margin: 0;
+    color: white;
+}
+
+@media only screen and (max-width: 650px) {
+    #signup-button {width: 175px;}
+    #signin-button {width: 175px;}
+}
+

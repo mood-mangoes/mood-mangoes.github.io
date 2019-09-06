@@ -1,0 +1,12 @@
+footer {
+    background-color: #00a99d;
+    font-family: Heebo;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px; 
+    left: 0;
+}

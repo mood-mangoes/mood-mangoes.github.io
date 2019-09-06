@@ -1,0 +1,38 @@
+#analyze-button {
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+}
+
+#analyze-button:hover {
+    box-shadow: 1px 1px 2px #667;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    overflow: scroll;
+    border-radius: 8px;
+    border: 1px solid #00a99d;
+    font-size: 18px;
+    padding: 8px;
+    margin-top: 75px;
+}
+
+#message {
+    margin-top: 0px;
+}
+
+#message-input, #results-section, #sentence-results-box {
+    width: 70%;
+    margin: 0 auto 50px; 
+    text-align: center;
+}
+
+@media only screen and (max-width: 650px) { 
+    #log-out {margin-top: 15px;
+        padding: 6px 15px;}
+    .blurb-h2 {margin-top: 20px;}
+    .blurb-p {margin-top: 0px;}
+    #analyze-button {width: 220px;}
+}

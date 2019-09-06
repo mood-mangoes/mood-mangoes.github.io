@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+}
+
+.loading-container {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    margin: -50px 0px 0px -50px;
+    opacity: 0.85;
+    }
+
+.loading-image {
+    height: 90%;
+    width: 90%;
+}
+
+main {
+    padding-top: 50px;
+}
+
+p {
+    font-family: Heebo;
+}
+
+h2 {
+    font-family: Francois One;
+    color: #426da9;
+}
+
+
+.no-display {
+    display: none;
+}
+
+
+.errors {
+    font-family: monospace;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.sign-up, #log-out, #analyze-button {
+    align-self: center;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 100px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 0;
+    background-color: #f38d52;
+}
+
+
+.emoji-box {
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 650px) {
+    header {flex-direction: column;}
+    h2 {margin-top: 0px;}
+    nav {display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;}
+    .nav-a {margin: 0px;
+        font-size: 20px;}
+    #log-out {margin-top: 35px;
+        padding: 6px 15px;}
+    footer {position: fixed;
+        margin-top: 50px;}
+    main {padding-top: 20px;}
+    #signup-button {width: 175px;}
+    #signin-button {width: 175px;}
+    #analyze-button {width: 220px;}
+    .loading-image {height: 50%; width: 50%;}
+    .loading-container {left: 35%; top: 75%;}
+    #message {margin-top: 35px;}
+    p.tone-id {font-size: 14px; margin-bottom: 0;}
+    .emoji-box {display: flex; flex-direction: column;}
+}
