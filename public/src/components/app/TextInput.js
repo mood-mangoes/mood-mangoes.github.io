@@ -13,7 +13,6 @@ class TextInput extends Component {
         const legendBox = dom.querySelector('#legend');
         const sentenceResultsBox = dom.querySelector('#sentence-results-box');
         const main = dom.querySelector('#message-input');
-        const resultsSection = dom.querySelector('#results-section');
         const colorKeyContainer = dom.querySelector('.color-key');
 
         analyzeButton.addEventListener('click', (event) => {
