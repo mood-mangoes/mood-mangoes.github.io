@@ -6,6 +6,9 @@ class SentenceResults extends Component {
         const sentences = dom.querySelectorAll('p'); 
         const sentenceResultsData = this.props.sentenceResult;
         sentences.forEach(sentence => {
+            if(sentence.textContent.charAt(0) === ' ') {
+                sentence.textContent = sentence.textContent.slice(1);
+            }
             const toneArray = [];
             sentenceResultsData.forEach(line => {
                 if(sentence.textContent === line.sentence) {
@@ -56,7 +59,7 @@ class SentenceResults extends Component {
 
     renderHTML() {
         let string = this.props.messageInput.message;
-        string = string.replace(/[!?.]+(?=$|\s)/g, '</p><p>');
+        string = string.replace(/(\.|!|\?|,\n)/g, '$1</p><p>');
 
         return /*html*/`
         <div id="sentence-results">

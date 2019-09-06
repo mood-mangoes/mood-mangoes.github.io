@@ -40,6 +40,21 @@ h2 {
     margin-top: 15px;
 }
 
+.sign-up, #log-out, #analyze-button {
+    align-self: center;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 100px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 0;
+    background-color: #f38d52;
+}
+
 
 .emoji-box {
     display: flex;
