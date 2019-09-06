@@ -6,12 +6,16 @@ class SentenceResults extends Component {
         const sentences = dom.querySelectorAll('p'); 
         const sentenceResultsData = this.props.sentenceResult;
         sentences.forEach(sentence => {
-            if(sentence.textContent.charAt(0) === ' ') {
+            if(sentence.textContent.charAt(0) === ' ' || sentence.textContent.match(/^\n+/)) {
                 sentence.textContent = sentence.textContent.slice(1);
+                if(sentence.textContent.charAt(0) === '\n' || sentence.textContent.charAt(0) === ' ') {
+                    sentence.textContent = sentence.textContent.slice(1);
+                }
+                console.log(sentence.textContent);
             }
             const toneArray = [];
             sentenceResultsData.forEach(line => {
-                if(sentence.textContent === line.sentence) {
+                if(line.sentence.includes(sentence.textContent)) {
                     toneArray.push(line.tone_id);
                     toneArray.push(line.score);
                 }
