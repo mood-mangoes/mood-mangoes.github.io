@@ -172,7 +172,8 @@ app.get('/api/tone_check/sentence', (req, res) => {
     client.query(`
         SELECT 
             *
-        FROM sentence_results;
+        FROM sentence_results
+        ORDER BY id DESC;
     `
     )
         .then(result => {
