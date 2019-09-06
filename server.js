@@ -64,7 +64,6 @@ app.post('/api/tone_check', (req, res) => {
             fullResults = results;
         })
         .then(() => {
-            // console.log(req.userId);
             return client.query(`
                 INSERT INTO text (user_id, body)
                                 VALUES ($1, $2)
@@ -80,7 +79,6 @@ app.post('/api/tone_check', (req, res) => {
         })
         .then(results => {
             const textId = results.rows[0].id;
-            // console.log(textId);
             return Promise.all(fullResults.document_tone.tones.map(item => {
                 return client.query(`
                 INSERT INTO document_results (text_id, tone_id, score)
@@ -101,7 +99,6 @@ app.post('/api/tone_check', (req, res) => {
         })
         .then(() => {
             const textId = documentResults[0].text_id;
-            // console.log(textId);
             return Promise.all(fullResults.sentences_tone.map(item => {
                 return Promise.all(item.tones.map(element => {
                     return client.query(`

@@ -8,13 +8,6 @@
     height: 60px;
 }
 
-/* .emoji-box {
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    color: white;
-} */
-
 .sentence-result {
     display: flex;
     justify-content: space-between;
@@ -92,7 +85,6 @@ main {
 .score-container {
     display: flex;
     align-items: center;
-    /* flex-direction: column; */
 }
 
 .max-width {
