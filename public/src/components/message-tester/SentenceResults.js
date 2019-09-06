@@ -11,7 +11,6 @@ class SentenceResults extends Component {
                 if(sentence.textContent.charAt(0) === '\n' || sentence.textContent.charAt(0) === ' ') {
                     sentence.textContent = sentence.textContent.slice(1);
                 }
-                console.log(sentence.textContent);
             }
             const toneArray = [];
             sentenceResultsData.forEach(line => {
