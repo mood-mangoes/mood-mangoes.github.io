@@ -56,6 +56,13 @@
     margin-top: -12px;
 }
 
+.third-hr {
+    height: 12px;
+    border-radius: 2px;
+    opacity: 0.25;
+    margin-top: -12px;
+}
+
 .tooltip-text {
     visibility: hidden;
     width: 200px;

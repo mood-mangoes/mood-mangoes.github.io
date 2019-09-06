@@ -57,6 +57,43 @@ class SentenceResults extends Component {
                 toolTipTwo.textContent = `${toneArray[2]}: ${scoreTwo}`;
                 hrTwo.appendChild(toolTipTwo);
             }
+            if(toneArray.length === 6) {
+                const hr = document.createElement('hr');
+                hr.classList.add('first-hr');
+                hr.classList.add(toneArray[0]);
+                hr.classList.add('tooltip');
+                sentence.appendChild(hr);
+                const toolTip = document.createElement('span');
+                let score = +toneArray[1];
+                score = score.toFixed(2);
+                toolTip.classList.add('tooltip-text');
+                toolTip.textContent = `${toneArray[0]}: ${score}`;
+                hr.appendChild(toolTip);
+                
+                const hrTwo = document.createElement('hr');
+                hrTwo.classList.add('second-hr');
+                hrTwo.classList.add(toneArray[2]);
+                hrTwo.classList.add('tooltip');
+                sentence.appendChild(hrTwo);
+                const toolTipTwo = document.createElement('span');
+                let scoreTwo = +toneArray[3];
+                scoreTwo = scoreTwo.toFixed(2);
+                toolTipTwo.classList.add('tooltip-text');
+                toolTipTwo.textContent = `${toneArray[2]}: ${scoreTwo}`;
+                hrTwo.appendChild(toolTipTwo);
+                
+                const hrThree = document.createElement('hr');
+                hrThree.classList.add('third-hr');
+                hrThree.classList.add(toneArray[4]);
+                hrThree.classList.add('tooltip');
+                sentence.appendChild(hrThree);
+                const toolTipThree = document.createElement('span');
+                let scoreThree = +toneArray[5];
+                scoreThree = scoreThree.toFixed(2);
+                toolTipThree.classList.add('tooltip-text');
+                toolTipThree.textContent = `${toneArray[4]}: ${scoreThree}`;
+                hrThree.appendChild(toolTipThree);
+            }
         });
     }
 
