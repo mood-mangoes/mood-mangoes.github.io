@@ -1,5 +1,7 @@
 import Component from '../Component.js';
 
+// make this data driven and loop to create each section
+
 class AboutUs extends Component {
     renderHTML() {
         return /*html*/`

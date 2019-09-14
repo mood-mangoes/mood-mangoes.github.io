@@ -1,27 +1,17 @@
 import Component from '../Component.js';
+import emojis from './emojis.js';
 
 class DocumentResultItem extends Component {
     renderHTML() {
-        let score = +this.props.documentResults.score;
-        const newScore = score.toFixed(2);
+        const documentResults = this.props.documentResults;
+        const toneId = documentResults.tone_id;
+        const score = (+documentResults.score).toFixed(2);
 
-        const emojis = {
-            anger: '😠',
-            fear: '😨',
-            joy: '😁',
-            sadness: '😔',
-            analytical: '🤔',
-            confident: '😏',
-            tentative: '😬'
-        };
-
-        return /*html*/`
-        
+        return /*html*/`        
             <div class="emoji-box">
-                <p class="tone-id">${this.props.documentResults['tone_id']} ${newScore}</p>
-                <p class="emoji">${emojis[this.props.documentResults['tone_id']]}</p>
+                <p class="tone-id">${toneId} ${score}</p>
+                <p class="emoji">${emojis[toneId]}</p>
             </div>            
-           
         `;
     }
 }

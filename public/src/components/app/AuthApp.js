@@ -21,6 +21,7 @@ class AuthApp extends Component {
         const header = new Header();
         dom.prepend(header.renderDOM());
         
+        // Again, not sure why this is here
         const blurbArea = dom.querySelector('#blurb-area');
         const blurb = document.createElement('h2');
         blurb.textContent = 'Why Use Tone Check?';

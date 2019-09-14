@@ -16,23 +16,30 @@ class AllUsersResultsApp extends Component {
         });
         dom.appendChild(resultsList.renderDOM());
 
-        getAllTextResults().then(textResults => {
-            resultsList.update({ textResults });
-        });
-        getDocumentResults().then(documentResults => {
-            resultsList.update({ documentResults });
-        });
-        getSentenceResults().then(sentenceResults => {
-            resultsList.update({ sentenceResults });
-        });
+        // Your server probably needs to work harder to
+        // have routes that give the data the front end
+        // is looking for, versus 3 requests.
+
+        // As-is, these can be done in parallel:
+        Promise.all([
+            getAllTextResults(),
+            getDocumentResults(),
+            getSentenceResults()
+        ])
+            .then(results => {
+                resultsList.update({ 
+                    textResults: results[0],
+                    documentResults: results[1],
+                    sentenceResults: results[2]
+                });
+            });
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
     } 
     renderHTML() {
         return /*html*/`
-            <div>
-            </div>
+            <div></div>
         `;
     }
 }

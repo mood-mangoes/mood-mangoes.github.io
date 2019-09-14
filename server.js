@@ -42,98 +42,73 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
-const ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
-const toneAnalyzer = new ToneAnalyzerV3({
-    url: 'https://gateway.watsonplatform.net/tone-analyzer/api',
-    iam_apikey: process.env.WATSON_API_KEY,
-    version: '2017-09-21',
-});
+const toneAnalyzer = require('./lib/tone-analyzer');
 
-app.post('/api/tone_check', (req, res) => { 
-    const documentResults = [];
-    const sentenceResults = [];
-    let fullResults;
+app.post('/api/tone-check', (req, res) => { 
+    
+    // these first two action can be done in parallel:
+    Promise.all([
+        client.query(`
+            INSERT INTO text (user_id, body)
+            VALUES ($1, $2)
+            RETURNING id; -- just return what you need
+        `, [req.userId, req.body.message]),
 
-    const toneParams = {
-        tone_input: { 'text': req.body.message },
-        content_type: 'application/json'
-    };
-
-    toneAnalyzer.tone(toneParams)
+        toneAnalyzer.tone({
+            tone_input: { 'text': req.body.message },
+            content_type: 'application/json'
+        })
+    ])
         .then(results => {
-            fullResults = results;
-        })
-        .then(() => {
-            return client.query(`
-                INSERT INTO text (user_id, body)
-                                VALUES ($1, $2)
-                                RETURNING *;
-                            `,
-            [req.userId, req.body.message]
-            )
-                .catch(err => {
-                    res.status(500).json({
-                        error: err.message || err
-                    });
-                });
-        })
-        .then(results => {
-            const textId = results.rows[0].id;
-            return Promise.all(fullResults.document_tone.tones.map(item => {
-                return client.query(`
-                INSERT INTO document_results (text_id, tone_id, score)
-                                VALUES ($1, $2, $3)
-                                RETURNING *;
-                            `,
-                [textId, item.tone_id, item.score]
-                )
-                    .then(res => {
-                        documentResults.push(res.rows[0]);
-                    })
-                    .catch(err => {
-                        res.status(500).json({
-                            error: err.message || err
-                        });
-                    });
-            }));
-        })
-        .then(() => {
-            const textId = documentResults[0].text_id;
-            return Promise.all(fullResults.sentences_tone.map(item => {
-                return Promise.all(item.tones.map(element => {
+            const textId = results[0].rows[0].id;
+            const documentTones = results[1].document_tone.tones;
+            const sentencesTones = results[1].sentences_tone;
+
+            return Promise.all([
+                Promise.all(documentTones.map(item => {
                     return client.query(`
-                        INSERT INTO sentence_results (text_id, sentence, tone_id, score)
-                        VALUES ($1, $2, $3, $4)
+                        INSERT INTO document_results (text_id, tone_id, score)
+                        VALUES ($1, $2, $3)
                         RETURNING *;
-                    `,
-                    [textId, item.text, element.tone_id, element.score]
-                    )
-                        .then(res => {
-                            sentenceResults.push(res.rows[0]);
-                        })
-                        .catch(err => {
-                            res.status(500).json({
-                                error: err.message || err
-                            });
-                        });
-                }));
-            }));
+                    `, [textId, item.tone_id, item.score])
+                        .then(result => result.rows[0]);
+                })),
+
+                Promise.all(sentencesTones.reduce((all, item) => {
+                    return all.concat(item.map(element => {
+                        return client.query(`
+                            INSERT INTO sentence_results (text_id, sentence, tone_id, score)
+                            VALUES ($1, $2, $3, $4)
+                            RETURNING *;
+                        `, [textId, item.text, element.tone_id, element.score])
+                            .then(result => result.rows[0]);
+                    }));
+                }, []))
+            ]);
         })
-        .then(() => {
+        .then(results => {
             res.json({
-                document: documentResults,
-                sentences: sentenceResults
+                document: results[0],
+                sentences: results[1]
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
             });
         });
 });
 
-app.get('/api/tone_check/text', (req, res) => {
+app.get('/api/tone-check/text', (req, res) => {
+    // Same information, different criteria
+    // Combine routes and use a query param
+    const where = req.query.all ? 'WHERE  user_id = $1' : '';
+
     client.query(`
-        SELECT 
-            *
-        FROM text 
-        WHERE user_id = $1
-        ORDER BY id DESC;
+        SELECT *
+        FROM   text 
+        ${where}
+        ORDER BY id DESC; -- add a TIMESTAMP column if ordering by most recent is important
     `,
     [req.userId]
     )
@@ -147,11 +122,12 @@ app.get('/api/tone_check/text', (req, res) => {
         });
 });
 
-app.get('/api/tone_check/allText', (req, res) => {
+app.get('/api/tone-check/sentence', (req, res) => {
+    // wouldn't this be per-user as well?
+    // or per text?
     client.query(`
-        SELECT 
-            *
-        FROM text 
+        SELECT   *
+        FROM     sentence_results
         ORDER BY id DESC;
     `
     )
@@ -165,29 +141,10 @@ app.get('/api/tone_check/allText', (req, res) => {
         });
 });
 
-app.get('/api/tone_check/sentence', (req, res) => {
+app.get('/api/tone-check/document', (req, res) => {
     client.query(`
-        SELECT 
-            *
-        FROM sentence_results
-        ORDER BY id DESC;
-    `
-    )
-        .then(result => {
-            res.json(result.rows);
-        })
-        .catch(err => {
-            res.status(500).json({
-                error: err.message || err
-            });
-        });
-});
-
-app.get('/api/tone_check/document', (req, res) => {
-    client.query(`
-        SELECT 
-            *
-        FROM document_results;
+        SELECT *
+        FROM   document_results;
     `
     )
         .then(result => {
