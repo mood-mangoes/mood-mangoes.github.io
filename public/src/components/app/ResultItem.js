@@ -7,15 +7,20 @@ class ResultItem extends Component {
     onRender(dom) {
         const documentResults = this.props.documentResults;
         const sentenceResults = this.props.sentenceResults;
-        const sentenceResultDiv = dom.querySelector('.sentence-result-div');
+        const textId = this.props.textResults.textResult.id;
 
-        for(let i = documentResults.length - 1; i >= 0 ; i --) {
-            if(documentResults[i].text_id === this.props.textResults.textResult.id) {
-                const documentResultItem = new DocumentResultItem({ documentResults: documentResults[i] });
-                const toneIdDiv = dom.querySelector('.tone-id-div');
-                toneIdDiv.appendChild(documentResultItem.renderDOM());
-            }
-        }     
+        const sentenceResultDiv = dom.querySelector('.sentence-result-div');
+        const toneIdDiv = dom.querySelector('.tone-id-div');
+
+        // really this component should be receiving far less data,
+        // but here is how to use array methods to achieve same work as current code:
+        documentResults
+            .filter(documentResult => documentResult.text_id === textId)
+            // prop key should be singular "documentResult"
+            .map(documentResult => new DocumentResultItem({ documentResult }))
+            .forEach(documentResultItem => toneIdDiv.appendChild(documentResultItem.renderDOM()))
+            
+        // same can be done here
         for(let i = sentenceResults.length - 1; i >= 0; i--) {
             if(sentenceResults[i].text_id === this.props.textResults.textResult.id) {
                 const sentenceResultItem = new SentenceResultItem({ sentenceResults: sentenceResults[i] });
@@ -48,8 +53,8 @@ class ResultItem extends Component {
             `;
         }
         else {
-            return `
-            <h1>Loading</>
+            return /*html*/`
+                <h1>Loading</h1>
             `;
         }
     }

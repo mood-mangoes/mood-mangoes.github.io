@@ -31,7 +31,6 @@ class TextInput extends Component {
 
             addMessage(messageInput)
                 .then(result => {
-
                     this.props.documentResult = result.document;
                     this.props.sentenceResult = result.sentences;
                     this.props.messageInput = messageInput;
@@ -63,21 +62,20 @@ class TextInput extends Component {
     renderHTML() {
         return /*html*/`
         <main>
-        <section id="message-input">
-            <form>
-            <textarea id="message" name="message"></textarea>
-            <button id="analyze-button">Analyze</button>
-            </form>
-        </section>
-        <section id="results-section">
-            <h2 class="no-display">Results</h2>
-            <div id="legend">
-            </div>
-            <div class="color-key">
-            </div>
-        </section>
-        <section id="sentence-results-box">
-        </section>
+            <section id="message-input">
+                <form>
+                <textarea id="message" name="message"></textarea>
+                <button id="analyze-button">Analyze</button>
+                </form>
+            </section>
+            <section id="results-section">
+                <h2 class="no-display">Results</h2>
+                <div id="legend">
+                </div>
+                <div class="color-key">
+                </div>
+            </section>
+            <section id="sentence-results-box"></section>
         </main>
         `;
     }

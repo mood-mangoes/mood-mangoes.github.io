@@ -1,19 +1,10 @@
 import Component from '../Component.js';
+import emojis from './emojis.js';
 
 class SentenceResultItem extends Component {
     renderHTML() {
         let score = +this.props.sentenceResults.score;
         const newScore = score.toFixed(2);
-
-        const emojis = {
-            anger: '😠',
-            fear: '😨',
-            joy: '😁',
-            sadness: '😔',
-            analytical: '🤔',
-            confident: '😏',
-            tentative: '😬'
-        };
 
         return /*html*/`
         
