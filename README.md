@@ -44,9 +44,3 @@ To get this application up and running on your own machine, download the reposit
 - As a small business owner, I don't have much time to write the perfect rejection email for job candidates and I'd like some ideas from more experienced HR professionals. I want to browse through saved emails that scored well on the tone analyzer.
 
 - As a student who is not great at spelling and working with others, I want to run my emails through a grammar check to make sure I wrote everything correctly, and to make sure I have a good attitude when writing to my fellow students for group projects. 
-
-## Conflict Plan
-We will all try to be open and honest in our communication at all times but especially if a conflict does arise. Although it can be awkward, we all agree that raising problems is the best way to work through them. We'll give each person the opportunity to speak during discussions since several of us are quiet. 
-
-## Communication Plan
-We will check in as a team every two hours to see how everyone is feeling, if they have enough/too much work, and use it as a chance to bring up any potential issues. 
